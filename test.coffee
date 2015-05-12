@@ -3,8 +3,7 @@ TimeAccumulator = require "./index.coffee"
 
 STEP = 16
 
-accumulator = new TimeAccumulator
-  step: STEP
+accumulator = new TimeAccumulator step: STEP
 
 called = 0
 update = ->

@@ -1,7 +1,7 @@
 # Simple time accumulator with no blocking
 
 ## example
-```coffee
+```coffeescript
 accumulator = new TimeAccumulator step: 16
 
 update = ->

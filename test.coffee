@@ -1,8 +1,44 @@
 test = require "prova"
-NiceModule = require "./index.coffee"
+TimeAccumulator = require "./index.coffee"
 
-niceModule = new NiceModule arg: "nice"
+STEP = 16
 
-test "is nice", (t) ->
-  t.plan 1
-  t.equal niceModule.arg, "nice"
+accumulator = new TimeAccumulator
+  step: STEP
+
+called = 0
+update = ->
+  called++
+
+step = (timestamp) ->
+  accumulator.accumulate update, timestamp
+  requestAnimationFrame step
+
+test "runs correctly", (t) ->
+  t.plan 5
+  requestAnimationFrame step
+  start = performance.now()
+
+  setTimeout ->
+    expect = 1 + (performance.now() - start) / STEP | 0
+    t.ok  expect * .8 < called < expect * 1.2
+  , 1000
+
+  setTimeout ->
+    expect = 1 + (performance.now() - start) / STEP | 0
+    t.ok  expect * .8 < called < expect * 1.2
+  , 2000
+  setTimeout ->
+    expect = 1 + (performance.now() - start) / STEP | 0
+    t.ok  expect * .8 < called < expect * 1.2
+  , 3000
+  setTimeout ->
+    expect = 1 + (performance.now() - start) / STEP | 0
+    t.ok  expect * .8 < called < expect * 1.2
+  , 4000
+
+  setTimeout ->
+    expect = 1 + (performance.now() - start) / STEP | 0
+    t.ok  expect * .8 < called < expect * 1.2
+  , 5000
+  

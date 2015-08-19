@@ -10,7 +10,7 @@
   },
   "scripts": {
     "build": "coffee -c index.coffee",
-    "test": "coffee test.coffee -b -l chrome"
+    "test": "coffee test.coffee -b -l firefox"
   },
   "author": "",
   "license": "ISC"

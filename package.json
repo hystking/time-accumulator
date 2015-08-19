@@ -1,5 +1,5 @@
 {
-  "name": "front-lib-template",
+  "name": "time-accumulator",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,7 +10,7 @@
   },
   "scripts": {
     "build": "coffee -c index.coffee",
-    "test": "coffee test.coffee -b -l firefox"
+    "test": "coffee test.coffee -b -l chrome"
   },
   "author": "",
   "license": "ISC"
